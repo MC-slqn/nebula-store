@@ -1,0 +1,48 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+dist-ssr/
+coverage/
+.vite/
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 环境变量与本地配置（不要把任何真实口令提交进来）
+.env
+.env.*
+!.env.example
+
+# 本地备份与素材（体积大、含个人报告，不进版本库）
+_backup/
+_resume/
+文档/
+# 注意用 imgs/* 而不是 imgs/ ：目录整体被忽略时，下面的 ! 放行规则不会生效
+imgs/*
+# README 里要展示的两张界面截图放行
+!imgs/前台.png
+!imgs/后台.png
+
+# 数据库导出：默认全部忽略，只放行仓库里作为初始化脚本的那一份
+*.sql
+!项目/lesson15/shopDemoBackend/db/*.sql
+
+# 回归脚本运行时生成的状态文件（由 00-数据快照.js save 重新生成）
+测试脚本/.snapshot.json
+
+# 编辑器
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

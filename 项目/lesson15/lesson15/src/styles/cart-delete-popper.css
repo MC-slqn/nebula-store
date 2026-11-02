@@ -1,0 +1,160 @@
+/*
+ * 购物车删除确认弹窗的样式
+ *
+ * 为什么放在独立 .css 文件里用 import 引入：
+ * Vite 会为非 scoped 的 SFC <style> 块前置 @charset "UTF-8"，
+ * 而在 <style> 标签内 @charset 属非法规则，浏览器解析时会连带吞掉
+ * 紧随其后的选择器，导致整块样式静默失效。
+ *
+ * 为什么用弹窗而不是气泡（el-popconfirm）：
+ * 「操作」列位于表格最右侧，气泡宽约 280px 而按钮右侧仅剩 ~90px 空间，
+ * 必然横跨整行压住「数量 / 小计」等数据，因此改为表格之外的居中弹窗。
+ */
+
+.cart-delete-dialog.el-dialog,
+.danger-confirm-dialog.el-dialog {
+  padding: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  border: 1px solid #edf0f7;
+  box-shadow: 0 24px 60px rgba(118, 75, 162, 0.22);
+}
+
+.cart-delete-dialog .el-dialog__header,
+.danger-confirm-dialog .el-dialog__header {
+  display: none;   /* 标题用自定义内容里的，不显示默认头部 */
+}
+
+.cart-delete-dialog .el-dialog__body,
+.danger-confirm-dialog .el-dialog__body {
+  padding: 30px 28px 6px !important;
+}
+
+.cart-delete-dialog .el-dialog__footer,
+.danger-confirm-dialog .el-dialog__footer {
+  padding: 0 28px 26px !important;
+}
+
+/* ---- 内容区 ---- */
+.cart-delete-dialog .del-dialog-body,
+.danger-confirm-dialog .del-dialog-body {
+  text-align: center;
+}
+
+.cart-delete-dialog .del-dialog-icon,
+.danger-confirm-dialog .del-dialog-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(229, 62, 62, 0.08);
+  color: #e53e3e;
+  font-size: 26px;
+}
+
+.cart-delete-dialog .del-dialog-title,
+.danger-confirm-dialog .del-dialog-title {
+  margin: 0 0 10px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d3748;
+  letter-spacing: 0.2px;
+}
+
+.cart-delete-dialog .del-dialog-name,
+.danger-confirm-dialog .del-dialog-name {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #764ba2;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.cart-delete-dialog .del-dialog-tip,
+.danger-confirm-dialog .del-dialog-tip {
+  margin: 0;
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+/* ---- 按钮区 ---- */
+.cart-delete-dialog .del-dialog-actions,
+.danger-confirm-dialog .del-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cart-delete-dialog .del-dialog-actions .el-button,
+.danger-confirm-dialog .del-dialog-actions .el-button {
+  height: 38px;
+  min-width: 104px;
+  margin: 0 !important;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.22s ease;
+}
+
+/* 取消：低调描边 */
+.cart-delete-dialog .del-cancel-btn,
+.danger-confirm-dialog .del-cancel-btn {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #4a5568 !important;
+}
+
+.cart-delete-dialog .del-cancel-btn:hover,
+.danger-confirm-dialog .del-cancel-btn:hover {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e0 !important;
+  color: #2d3748 !important;
+}
+
+/* 确认：危险红渐变，呼应页面主按钮的渐变语言 */
+.cart-delete-dialog .del-confirm-btn,
+.danger-confirm-dialog .del-confirm-btn {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.28);
+}
+
+.cart-delete-dialog .del-confirm-btn:hover,
+.danger-confirm-dialog .del-confirm-btn:hover {
+  box-shadow: 0 6px 16px rgba(229, 62, 62, 0.36) !important;
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+/* 遮罩颜色调淡，保持页面清爽 */
+.el-overlay:has(.cart-delete-dialog),
+.el-overlay:has(.danger-confirm-dialog),
+.el-overlay:has(.pay-dialog) {
+  background-color: rgba(17, 24, 39, 0.28);
+}
+
+/* ==================== 微信支付弹窗（PayDialog.vue） ==================== */
+.pay-dialog.el-dialog {
+  padding: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  border: 1px solid #edf0f7;
+  box-shadow: 0 24px 60px rgba(7, 193, 96, 0.18);
+}
+
+.pay-dialog .el-dialog__header {
+  display: none;
+}
+
+.pay-dialog .el-dialog__body {
+  padding: 28px 26px 6px !important;
+}
+
+.pay-dialog .el-dialog__footer {
+  padding: 0 26px 24px !important;
+}
