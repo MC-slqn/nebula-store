@@ -46,3 +46,6 @@ imgs/*
 *.njsproj
 *.sln
 *.sw?
+
+# 本地助手工作目录（含个人笔记，不进版本库）
+.workbuddy/
